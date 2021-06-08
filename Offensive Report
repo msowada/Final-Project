@@ -1,0 +1,54 @@
+Red Team: Summary of Operations
+Table of Contents
+
+Exposed Services
+Critical Vulnerabilities
+Exploitation
+
+Exposed Services
+Nmap scan results for each machine reveal the below services and OS details:
+nmap-sV-O-vv192.168.1.110
+
+This scan identifies the services below as potential points of entry:
+Target 1
+Port22/tcp-ssh-open
+Port80/tcp-http-open
+Port111/tcp-rcbind-open
+Port139/tcp-netbois-ssn-open
+Port445/tcp-netbios-ssn-open
+
+Port 22
+An open port 22 can allow ssh logins. Keeps port 22 open and usally welcomes attackers to brute force using a dictionary attack
+
+Port 80
+Port 80 allows for HTTP traffic. Attackers can also use brute force and dictionary attacks to gain access.
+
+
+Port 111
+Port 111 allows attackers to see what services are running. This can be used for reconnaissance activity. The RPC Service has a history of security vulnerabilities.
+
+Port 139 & 445
+These ports allow for network file sharing. Also allow the potential of a possible reverse shell via Metasploit.
+The following vulnerabilities were identified on each target:
+
+Critical Vulnerabilities
+The following vulnerabilities were identified on each target:
+
+Target 1
+User Enumeration (WordPress site)
+Weak User Password
+Unsalted User Password Hash (WordPress database)
+Misconfiguration of User Privileges/Privilege Escalation
+
+Explotation
+The Red Team was able to penetrate Target 1 and retrieve the following confidential data:
+
+Target 1
+Flag1: b9bbcb33ellb80be759c4e844862482d
+Exploit Used:
+WPScan to enumerate users of the Target 1 WordPress site
+Command:
+$ wpscan --url http://192.168.1.110 --enumerate u
+
+
+
